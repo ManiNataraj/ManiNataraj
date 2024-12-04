@@ -49,3 +49,4 @@ class Advertisement(models.Model):
         return self.title
 ## a comment added ...
 ## a second command 
+## a third command
