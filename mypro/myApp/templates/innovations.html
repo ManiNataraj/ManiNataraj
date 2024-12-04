@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovations - News Portal</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>News Portal</h1>
+    </header>
+
+    <div class="marquee-container">
+        <div class="marquee-text">
+            🔵 Innovations: Explore groundbreaking technologies and creative ideas shaping the future! Stay updated with the latest trends and advancements transforming our world.
+        </div>
+    </div>
+
+    <nav>
+        <div class="menu-links">
+            <a href="/home/">Home</a>
+            <a href="/world/">World</a>
+            <a href="/politics/">Politics</a>
+            <a href="/sports/">Sports</a>
+            <a href="/entertainment/">Entertainment</a>
+            <a href="/article_list/">Latest Update</a>
+            <a href="/innovations/">Innovations</a>
+            <a href="/business/">Business</a>
+            <a href="/contact/">Contact</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="main-article">
+            <h2>Innovations</h2>
+            {% for article in articles %}
+                <div class="article">
+                    <h3>{{ article.title }}</h3>
+                    <img src="{{ article.image.url }}" alt="{{ article.title }} Image" style="width: 100%; max-width: 300px; height: auto;">
+                    <div class="article-content">
+                        <p>{{ article.content }}</p>
+                        <p class="published-date">Published on {{ article.published_date }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No entertainment news available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        © 2024 News Portal. All rights reserved.
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

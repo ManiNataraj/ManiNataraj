@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+</head>
+<body>
+    
+
+<header>
+    <div class="header-content-wrapper">
+        <h1>News Portal</h1>
+        <div class="admin-login-icon">
+            <a href="/admin/" title="Admin Login">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+
+    <div class="marquee-container">
+        <div class="marquee-text">
+            🔴 Breaking News: Stock Markets Surge | Heavy Rainfall Hits Coastal Areas | Sports: Team A Wins Championship |
+            Entertainment: New Movie Release Receives Rave Reviews!
+        </div>
+    </div>
+
+    <nav>
+        <div class="menu-links">
+            <a href="/home/">Home</a>
+            <a href="/world/">World</a>
+            <a href="/politics/">Politics</a>
+            <a href="/sports/">Sports</a>
+            <a href="/entertainment/">Entertainment</a>
+            <a href="/article_list/">Latest Update</a>
+            <a href="/innovations/">Innovations</a>
+            <a href="/business/">Business</a>
+            <a href="/contact/">Contact</a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <img src="{{ article.image.url }}" alt="{{ article.title }} Image" style="width: 100%; max-width: 300px; height: auto;">
+        <p>{{ article.content }}</p>
+        {% if article.video %}
+        <video controls width="600">
+            <source src="{{ article.video.url }}" type="video/mp4">
+        
+        </video>
+        {% endif %}
+        <p><strong>Published on:</strong> {{ article.published_date }}</p>
+        <a href="/home/">Back to Home</a>
+    </div>
+
+
+
+    
+    
+
+    
+    <div class="advertisement">
+        <h3>Advertisement</h3>
+        {% for ad in advertisements %}
+            <div class="ad-content">
+                {% if ad.image %}
+                    <a href="{{ ad.link }}" target="_blank">
+                        <img src="{{ ad.image.url }}" alt="{{ ad.title }}" style="width: 100%; max-width: 400px; height: auto; display: block; margin: 0 auto;">
+                    </a>
+                {% endif %}
+                {% if ad.video_url %}
+                    <iframe width="350" src="{{ ad.video_url }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                {% endif %}
+                <p>{{ ad.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+
+    <footer>
+        © 2024 News Portal. All rights
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+    
